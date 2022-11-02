@@ -1,16 +1,16 @@
 package calculator;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RegisterFactory {
 	
-	ArrayList<Register> registers = new ArrayList<Register>();
+	HashMap<String, Register> registerNames = new HashMap<String, Register>();
 
 	public Register createRegister(String name) {
 		
 		Register zeroreg = new ZeroRegister();
 		zeroreg.giveName(name);
-		registers.add(zeroreg);
+		registerNames.put(name, zeroreg);
 		
 		return null;
 	}
