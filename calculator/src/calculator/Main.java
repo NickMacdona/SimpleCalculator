@@ -9,7 +9,6 @@ public class Main {
 
 	static HashMap<String, Integer> registers = new HashMap<String, Integer>();
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Deque<String> queue = new LinkedList<String>();
 		Deque<String> stack = new LinkedList<String>();
