@@ -32,7 +32,15 @@ public class Main {
 			;
 			// determine if string is correct format
 			String[] commandword = command.split("\\s+");
-			//TODO
+			if (commandword.length > 3) {
+				System.out.println("Command not recognised");				
+			}
+			if (checkIfCommand(commandword[1]) == false) {
+				System.out.println("Command not recognised");
+			}
+			if (checkIfRegisterValid(commandword[0]) == false) {
+				System.out.println("Command not recognised");
+			}
 			
 			// determine what type of string we have
 			// pass instruction to queue or stack depending on if it uses values or just registers
@@ -74,5 +82,31 @@ public class Main {
 		return true;
 			
 	}
-
+	
+	public static boolean checkIfCommand(String string) {
+		if (string == "add") {
+			return true;
+		}
+		else if(string == "subtract") {
+			return true;			
+		}
+		else if(string == "multiply") {
+			return true;			
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public static boolean checkIfRegisterValid(String string) {
+		char[] chars = string.toCharArray();
+		for (char c : chars) {
+			if(Character.isLetterOrDigit(c)) {
+				}
+			else {
+				return false;
+			}
+		}
+		return true;		
+	}
 }
