@@ -115,19 +115,7 @@ public class Main {
 					stack.add(command);
 				} 
 			}
-			
-			//read file in line by line
-			
-			//check if end of file
-			
-			//check if print
-			
-				// if print, empty stack and queue
-			
-			//determine type of command
-			
-			//store command in correct place
-			
+
 		}
 		else {
 		Scanner scanner = new Scanner(System.in);
