@@ -27,7 +27,6 @@ public class Main {
 					while (true) {
 
 						currentqueue = queue.pollFirst();
-						//System.out.println(currentqueue);
 						if (currentqueue == null) {
 							break;
 						}
@@ -52,7 +51,6 @@ public class Main {
 					// take instruction from top of stack
 					while (true) {
 						currentstack = stack.pollLast();
-						//System.out.println(currentstack);
 						if (currentstack == null) {
 							break;
 						}
@@ -88,9 +86,6 @@ public class Main {
 				;
 				// determine if string is correct format
 				String[] commandword = command.split("\\s+");
-				//System.out.println(commandword[0]);
-				//System.out.println(commandword[1]);
-				//System.out.println(commandword[2]);
 				if (commandword.length != 3) {
 					System.out.println("Command not recognised (length)");
 					continue;
@@ -133,7 +128,6 @@ public class Main {
 				while (true) {
 
 					currentqueue = queue.pollFirst();
-					//System.out.println(currentqueue);
 					if (currentqueue == null) {
 						break;
 					}
@@ -158,7 +152,6 @@ public class Main {
 				// take instruction from top of stack
 				while (true) {
 					currentstack = stack.pollLast();
-					//System.out.println(currentstack);
 					if (currentstack == null) {
 						break;
 					}
@@ -194,9 +187,6 @@ public class Main {
 			;
 			// determine if string is correct format
 			String[] commandword = command.split("\\s+");
-			//System.out.println(commandword[0]);
-			//System.out.println(commandword[1]);
-			//System.out.println(commandword[2]);
 			if (commandword.length != 3) {
 				System.out.println("Command not recognised (length)");
 				continue;
@@ -222,56 +212,6 @@ public class Main {
 			} 
 		}
 		}
-		
-		
-//		System.out.println(queue.size());
-//		for (String String : queue) {
-//			System.out.println(queue.pollFirst());
-//		}
-		//System.out.println(stack);
-		
-
-		/*
-		 * String currentqueue = "start"; // take instruction from front of queue while
-		 * (true) {
-		 * 
-		 * currentqueue = queue.pollFirst(); System.out.println(currentqueue); if
-		 * (currentqueue == null) { break; } String[] instructionword =
-		 * currentqueue.split("\\s+");
-		 * 
-		 * 
-		 * // identify if registers are new if
-		 * (registers.containsKey(instructionword[0]) == false) {
-		 * 
-		 * // create any new registers registers.put(instructionword[0], 0); } // adjust
-		 * register with value presented adjustQueueRegister(instructionword[0],
-		 * instructionword[1], instructionword[2]);
-		 * 
-		 * 
-		 * // repeat while we empty queue }
-		 * 
-		 * 
-		 * String currentstack = "start"; // take instruction from top of stack while
-		 * (true) { currentstack = stack.pollLast(); System.out.println(currentstack);
-		 * if (currentstack == null) { break; }
-		 * 
-		 * String[] instructionword = currentstack.split("\\s+");
-		 * 
-		 * // identify if registers are new if
-		 * (registers.containsKey(instructionword[0]) == false) { // create any new
-		 * registers registers.put(instructionword[0], 0);
-		 * System.out.println("Created register" + instructionword[0]); } if
-		 * (registers.containsKey(instructionword[2]) == false) { // create any new
-		 * registers registers.put(instructionword[2], 0);
-		 * System.out.println("Created register" + instructionword[2]); } // adjust
-		 * register with value presented adjustStackRegister(instructionword[0],
-		 * instructionword[1], instructionword[2]);
-		 * 
-		 * // repeat while we empty stack }
-		 * 
-		 * // get result int result = registers.getOrDefault(printwords[1], null); //
-		 * print results to console System.out.println(result);
-		 */
 		
 	}
 	public static void adjustQueueRegister(String register, String operation, String number) {
