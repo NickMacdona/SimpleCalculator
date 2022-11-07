@@ -70,9 +70,15 @@ public class Main {
 
 		String currentqueue = "start";
 		// take instruction from front of queue
-		while (currentqueue != null) {
-			currentqueue = queue.poll();//TODO scared this will break
-			String [] instructionword = currentqueue.split("\\s+");
+		while (true) {
+
+			currentqueue = queue.pollFirst();
+			System.out.println(currentqueue);
+			if (currentqueue == null) {
+				break;
+			}
+			String[] instructionword = currentqueue.split("\\s+");
+			
 
 			// identify if registers are new 
 			if (registers.containsKey(instructionword[0]) == false) {
@@ -88,8 +94,11 @@ public class Main {
 		}
 		String currentstack = "start";
 		// take instruction from top of stack
-		while (currentstack != null) {
-			currentstack = queue.poll();//TODO scared this will break
+		while (true) {
+			currentstack = queue.pollFirst();
+			if (currentstack == null) {
+				break;
+			}
 			String [] instructionword = currentstack.split("\\s+");
 
 			// identify if registers are new 
