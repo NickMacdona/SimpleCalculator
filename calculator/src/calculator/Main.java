@@ -14,8 +14,8 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		Deque<String> queue = new LinkedList<String>();
 		Deque<String> stack = new LinkedList<String>();
-		if (true) {
-			File file = new File("Calculator.txt");
+		if (args.length > 0) {
+			File file = new File(args[0]);
 			Scanner filescanner = new Scanner(file);
 			while(filescanner.hasNextLine()) {
 				String command = filescanner.nextLine();
