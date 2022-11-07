@@ -1,5 +1,7 @@
 package calculator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,9 +11,125 @@ public class Main {
 
 	static HashMap<String, Integer> registers = new HashMap<String, Integer>();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		Deque<String> queue = new LinkedList<String>();
 		Deque<String> stack = new LinkedList<String>();
+		if (true) {
+			File file = new File("Calculator.txt");
+			Scanner filescanner = new Scanner(file);
+			while(filescanner.hasNextLine()) {
+				String command = filescanner.nextLine();
+				command.toLowerCase();
+				if(command.contains("print")) {
+					String[] printwords = command.split("\\s+");
+					String currentqueue = "start"; 
+					// take instruction from front of queue
+					while (true) {
+
+						currentqueue = queue.pollFirst();
+						//System.out.println(currentqueue);
+						if (currentqueue == null) {
+							break;
+						}
+						String[] instructionword = currentqueue.split("\\s+");
+						
+
+						// identify if registers are new 
+						if (registers.containsKey(instructionword[0]) == false) {
+							
+							// create any new registers
+							registers.put(instructionword[0], 0);
+						}
+					// adjust register with value presented
+						adjustQueueRegister(instructionword[0], instructionword[1], instructionword[2]);
+									
+					
+					// repeat while we empty queue
+					}
+					
+					
+					String currentstack = "start";
+					// take instruction from top of stack
+					while (true) {
+						currentstack = stack.pollLast();
+						//System.out.println(currentstack);
+						if (currentstack == null) {
+							break;
+						}
+
+						String[] instructionword = currentstack.split("\\s+");
+
+						// identify if registers are new 
+						if (registers.containsKey(instructionword[0]) == false) {
+							// create any new registers
+							registers.put(instructionword[0], 0);
+						}
+						if (registers.containsKey(instructionword[2]) == false) {
+							// create any new registers
+							registers.put(instructionword[2], 0);
+						}
+					// adjust register with value presented
+						adjustStackRegister(instructionword[0], instructionword[1], instructionword[2]);
+									
+					// repeat while we empty stack
+					}
+
+					// get result
+					int result = registers.getOrDefault(printwords[1], null);
+					// print results to console
+					System.out.println("Printed Result is: " + result);
+					continue;
+				}
+					
+				if (command.equals("quit")) {
+					filescanner.close();
+					System.exit(0);
+				}
+				;
+				// determine if string is correct format
+				String[] commandword = command.split("\\s+");
+				//System.out.println(commandword[0]);
+				//System.out.println(commandword[1]);
+				//System.out.println(commandword[2]);
+				if (commandword.length != 3) {
+					System.out.println("Command not recognised (length)");
+					continue;
+				}
+				if (checkIfCommand(commandword[1]) == false) {
+					System.out.println("Command not recognised (unknown command)");
+					continue;
+				}
+				if (checkIfRegisterValid(commandword[0]) == false) {
+					System.out.println("Command not recognised (register invalid)");
+					continue;
+				}
+				if (checkIfRegisterValid(commandword[2]) == false && checkIfNum(commandword[2]) == false) {
+					System.out.println("Command not recognised (third word is not a register or number)");
+					continue;
+				}
+				// determine what type of string we have
+				// pass instruction to queue or stack depending on if it uses values or just registers
+				if (checkIfNum(commandword[2])) {
+					queue.add(command);
+				} else {
+					stack.add(command);
+				} 
+			}
+			
+			//read file in line by line
+			
+			//check if end of file
+			
+			//check if print
+			
+				// if print, empty stack and queue
+			
+			//determine type of command
+			
+			//store command in correct place
+			
+		}
+		else {
 		Scanner scanner = new Scanner(System.in);
 		String[] printwords = null;
 		
@@ -114,6 +232,7 @@ public class Main {
 			} else {
 				stack.add(command);
 			} 
+		}
 		}
 		
 		
